@@ -1,0 +1,16 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="128" height="128" rx="20" fill="#007ACC"/>
+  
+  <!-- VS Code bracket -->
+  <path d="M20 40 L20 88 L35 88 L35 75 L45 75 L45 53 L35 53 L35 40 Z" fill="white"/>
+  <path d="M50 40 L50 88 L65 88 L65 75 L55 75 L55 53 L65 53 L65 40 Z" fill="white"/>
+  
+  <!-- Sync arrows -->
+  <path d="M75 50 L85 40 L95 50 L90 55 L85 50 L80 55 Z" fill="#00D4AA"/>
+  <path d="M95 78 L85 88 L75 78 L80 73 L85 78 L90 73 Z" fill="#00D4AA"/>
+  
+  <!-- Roblox-style dots -->
+  <circle cx="75" cy="64" r="3" fill="white"/>
+  <circle cx="95" cy="64" r="3" fill="white"/>
+</svg>

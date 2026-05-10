@@ -1,0 +1,210 @@
+{
+  "name": "roblox-sync",
+  "displayName": "Roblox Sync",
+  "description": "Real-time sync between Roblox Studio and VS Code",
+  "version": "1.0.0",
+  "publisher": "roblox-sync-dev",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Debuggers"
+  ],
+  "keywords": [
+    "roblox",
+    "lua",
+    "luau",
+    "sync",
+    "studio",
+    "game development"
+  ],
+  "activationEvents": [
+    "workspaceContains:**/rbxsync.json"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "robloxSync.connect",
+        "title": "Connect to Studio",
+        "category": "Roblox Sync",
+        "icon": "$(plug)"
+      },
+      {
+        "command": "robloxSync.extract",
+        "title": "Extract Game from Studio",
+        "category": "Roblox Sync",
+        "icon": "$(download)"
+      },
+      {
+        "command": "robloxSync.sync",
+        "title": "Sync Changes to Studio",
+        "category": "Roblox Sync",
+        "icon": "$(sync)"
+      },
+      {
+        "command": "robloxSync.console",
+        "title": "Open Console",
+        "category": "Roblox Sync",
+        "icon": "$(terminal)"
+      },
+      {
+        "command": "robloxSync.restartServer",
+        "title": "Restart Sync Server",
+        "category": "Roblox Sync",
+        "icon": "$(debug-restart)"
+      },
+      {
+        "command": "robloxSync.newScript",
+        "title": "New Script",
+        "category": "Roblox Sync",
+        "icon": "$(new-file)"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "robloxSyncSidebar",
+          "name": "Roblox Sync",
+          "when": "workspaceContains:**/rbxsync.json",
+          "icon": "$(sync)"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "robloxSyncSidebar",
+        "contents": "No Roblox project detected. Initialize with `rbxsync init` or open a folder containing rbxsync.json.\n[Initialize Project](command:robloxSync.initProject)"
+      }
+    ],
+    "configuration": {
+      "title": "Roblox Sync",
+      "properties": {
+        "robloxSync.autoStart": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically start the sync server when opening a Roblox project",
+          "scope": "window"
+        },
+        "robloxSync.serverPort": {
+          "type": "number",
+          "default": 44755,
+          "minimum": 1024,
+          "maximum": 65535,
+          "description": "Port for the sync server",
+          "scope": "window"
+        },
+        "robloxSync.consoleLines": {
+          "type": "number",
+          "default": 100,
+          "minimum": 10,
+          "maximum": 1000,
+          "description": "Number of console lines to keep in memory",
+          "scope": "window"
+        },
+        "robloxSync.autoSync": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically sync file changes to Studio",
+          "scope": "window"
+        },
+        "robloxSync.showNotifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show notifications for sync events",
+          "scope": "window"
+        }
+      }
+    },
+    "terminal": {
+      "profiles": [
+        {
+          "title": "Roblox Sync Server",
+          "id": "roblox-sync.terminal",
+          "icon": "$(server)"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "robloxSync.connect",
+          "when": "view == robloxSyncSidebar",
+          "group": "navigation"
+        },
+        {
+          "command": "robloxSync.extract",
+          "when": "view == robloxSyncSidebar",
+          "group": "navigation"
+        },
+        {
+          "command": "robloxSync.sync",
+          "when": "view == robloxSyncSidebar",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "robloxSync.connect",
+          "when": "workspaceContains:**/rbxsync.json"
+        },
+        {
+          "command": "robloxSync.extract",
+          "when": "workspaceContains:**/rbxsync.json"
+        },
+        {
+          "command": "robloxSync.sync",
+          "when": "workspaceContains:**/rbxsync.json"
+        },
+        {
+          "command": "robloxSync.console",
+          "when": "workspaceContains:**/rbxsync.json"
+        },
+        {
+          "command": "robloxSync.restartServer",
+          "when": "workspaceContains:**/rbxsync.json"
+        },
+        {
+          "command": "robloxSync.newScript",
+          "when": "workspaceContains:**/rbxsync.json"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.0",
+    "@vscode/vsce": "^2.22.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-repo/roblox-sync.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-repo/roblox-sync/issues"
+  },
+  "homepage": "https://roblox-sync.dev",
+  "license": "MIT",
+  "author": {
+    "name": "Roblox Sync Team",
+    "email": "support@roblox-sync.dev"
+  }
+}

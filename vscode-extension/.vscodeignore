@@ -1,0 +1,9 @@
+.vscode/**
+.vscode-test/**
+src/**
+.gitignore
+tsconfig.json
+vss-extension.json
+*.ts.map
+icon.svg
+roblox-icon.svg

@@ -1,0 +1,25 @@
+# Git commands to push Roblox Sync to GitHub
+
+# Navigate to project folder
+cd "C:\Users\shifr\CascadeProjects\roblox-sync"
+
+# Initialize git repository
+git init
+
+# Add all files
+git add .
+
+# Initial commit
+git commit -m "Initial commit: Roblox Sync v1.0.0"
+
+# Add remote repository (replace YOUR_USERNAME with your GitHub username)
+git remote add origin https://github.com/YOUR_USERNAME/roblox-sync.git
+
+# Push to GitHub
+git push -u origin main
+
+# After pushing, update VS Code extension package.json with:
+# "repository": {
+#   "type": "git",
+#   "url": "https://github.com/YOUR_USERNAME/roblox-sync.git"
+# }

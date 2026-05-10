@@ -1,0 +1,46 @@
+{
+  "name": "roblox-sync",
+  "displayName": "Roblox Sync",
+  "description": "Real-time sync between Roblox Studio and VS Code",
+  "version": "1.0.0",
+  "publisher": "roblox-sync-dev",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "workspaceContains:**/rbxsync.json"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "robloxSync.connect",
+        "title": "Connect to Studio"
+      },
+      {
+        "command": "robloxSync.sync",
+        "title": "Sync Changes"
+      },
+      {
+        "command": "robloxSync.console",
+        "title": "Open Console"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "package": "vsce package --noVerify"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "18.x",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}

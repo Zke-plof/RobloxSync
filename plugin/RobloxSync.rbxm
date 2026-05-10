@@ -1,0 +1,51 @@
+-- RobloxSync Plugin Manifest
+-- Real-time sync between Roblox Studio and VS Code
+
+-- Plugin metadata
+local plugin = script.Parent
+local widgetInfo = DockWidgetPluginGuiInfo.new(
+    Enum.InitialDockState.Right,
+    false,
+    false,
+    300,
+    400,
+    300,
+    400
+)
+
+local success, widget = pcall(function()
+    return plugin:CreateDockWidgetPluginGui("RobloxSync", widgetInfo)
+end)
+
+if not success then
+    warn("Failed to create Roblox Sync widget: " .. tostring(widget))
+    return
+end
+
+-- Set widget properties
+widget.Title = "Roblox Sync"
+widget.Name = "RobloxSync"
+
+-- Set plugin properties
+plugin.Name = "RobloxSync"
+plugin.Description = "Real-time sync between Roblox Studio and VS Code"
+
+-- Return plugin table
+return {
+    Name = "Roblox Sync",
+    Description = "Sync your Roblox Studio projects with VS Code for better scripting experience",
+    Version = "1.0.0",
+    Publisher = "roblox-sync-dev",
+    Author = "Roblox Sync Team",
+    Website = "https://roblox-sync.dev",
+    Source = "https://github.com/your-repo/roblox-sync",
+    License = "MIT",
+    Category = "Development",
+    Tags = {"sync", "vscode", "scripting", "development"},
+    Modules = {},
+    Dependencies = {},
+    
+    Plugin = plugin,
+    Widget = widget,
+    WidgetInfo = widgetInfo
+}
